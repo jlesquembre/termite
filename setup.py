@@ -7,7 +7,7 @@ with open(os.path.join(here, 'README.rst'), 'rt') as f:
 
 setup(name='termite',
       version='0.0.1.dev0',
-      author='José Luis Lafuente',
+      author='Jose Luis Lafuente',
       author_email='jlesquembre@gmail.com',
       description='Automates your build process',
       long_description=README,
