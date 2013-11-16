@@ -5,4 +5,5 @@ Sphinx
 sphinxcontrib-napoleon
 tox
 nose
+doc2git
 -e .

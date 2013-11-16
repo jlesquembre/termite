@@ -63,6 +63,10 @@ Installation
    extend
 
 
+.. toctree::
+   :hidden:
+
+   links
 
 Indices and tables
 ==================
