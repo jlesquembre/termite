@@ -1,0 +1,199 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3. Tasks &mdash; termite 0.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="termite 0.0.2 documentation" href="index.html" />
+    <link rel="next" title="4. Calling external python functions" href="extend.html" />
+    <link rel="prev" title="2. Commands" href="commands.html" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="extend.html" title="4. Calling external python functions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="commands.html" title="2. Commands"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">termite 0.0.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tasks">
+<h1>3. Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h1>
+<p>There are 3 types of tasks in <a class="reference external" href="http://google.com/">Termite</a>, <cite>shell</cite>, <cite>cp</cite> and <cite>server</cite></p>
+<div class="section" id="shell-tasks">
+<h2>3.1. Shell tasks<a class="headerlink" href="#shell-tasks" title="Permalink to this headline">¶</a></h2>
+<p>Shell tasks accepts 3 options, <a class="reference internal" href="#command"><em>Command (Mandatory)</em></a>, <a class="reference internal" href="#cwd"><em>Cwd (Optional)</em></a> and <a class="reference internal" href="#shell-watch"><em>watch</em></a>.</p>
+<div class="section" id="command-mandatory">
+<span id="command"></span><h3>3.1.1. Command (Mandatory)<a class="headerlink" href="#command-mandatory" title="Permalink to this headline">¶</a></h3>
+<p>Specifies the command to run. Is also possible specify a list of commands. In
+this case, the commands are run sequentially.</p>
+</div>
+<div class="section" id="cwd-optional">
+<span id="cwd"></span><h3>3.1.2. Cwd (Optional)<a class="headerlink" href="#cwd-optional" title="Permalink to this headline">¶</a></h3>
+<p>The current directory will be changed to <cite>cwd</cite> before the command is executed.</p>
+</div>
+<div class="section" id="watch-optional">
+<span id="shell-watch"></span><h3>3.1.3. Watch (Optional)<a class="headerlink" href="#watch-optional" title="Permalink to this headline">¶</a></h3>
+<p>List of files to watch for modifications. After any change, the command is
+executed again. It is possible to use shell-style wildcards (<cite>*</cite> or <cite>**</cite>). It
+is also possible specify folders to watch, in this case <cite>/some/path/</cite> and
+<cite>/some/path/**</cite> have the same effect.
+If watch is omitted, the command is run only once.</p>
+</div>
+</div>
+<div class="section" id="cp-tasks">
+<h2>3.2. Cp tasks<a class="headerlink" href="#cp-tasks" title="Permalink to this headline">¶</a></h2>
+<p>Copy files is a very common operation, thats the reason have a task for this
+operation, although would we possible to use a command task for copy files. For
+<cite>cp</cite> tasks there are 3 options, <a class="reference internal" href="#source"><em>Source (Mandatory)</em></a>, <a class="reference internal" href="#dest"><em>Dest (Mandatory)</em></a> and <a class="reference internal" href="#cp-watch"><em>watch</em></a>.</p>
+<div class="section" id="source-mandatory">
+<span id="source"></span><h3>3.2.1. Source (Mandatory)<a class="headerlink" href="#source-mandatory" title="Permalink to this headline">¶</a></h3>
+<p>A file, or list of files to copy. Shell-style wildcards are allowed.</p>
+</div>
+<div class="section" id="dest-mandatory">
+<span id="dest"></span><h3>3.2.2. Dest (Mandatory)<a class="headerlink" href="#dest-mandatory" title="Permalink to this headline">¶</a></h3>
+<p>Where copy the file or files. Should be a folder, if doesn&#8217;t exist is created.
+Be careful, files are overwritten without any warning.</p>
+</div>
+<div class="section" id="cp-watch">
+<span id="id2"></span><h3>3.2.3. Watch (Optional)<a class="headerlink" href="#cp-watch" title="Permalink to this headline">¶</a></h3>
+<p>Specifies if the source files should be monitored. It is boolean value, by
+default the value is set to <cite>False</cite>.</p>
+</div>
+</div>
+<div class="section" id="server-task">
+<h2>3.3. Server task<a class="headerlink" href="#server-task" title="Permalink to this headline">¶</a></h2>
+<p>This task start an HTTP server. If you are watching any files, your browser is
+automatically refreshed after every change. Has only one option, <a class="reference internal" href="#path"><em>Path (Mandatory)</em></a>.</p>
+<div class="section" id="path-mandatory">
+<span id="path"></span><h3>3.3.1. Path (Mandatory)<a class="headerlink" href="#path-mandatory" title="Permalink to this headline">¶</a></h3>
+<p>Serves files from this directory.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Useful Links</h3>
+<ul>
+  <li><a href="https://pypi.python.org/pypi/termite">termite @ PyPI</a></li>
+  <li><a href="https://github.com/jlesquembre/termite">termite @ github</a></li>
+  <li><a href="https://github.com/jlesquembre/termite/issues">report an error</a></li>
+
+</ul>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="commands.html"
+                        title="previous chapter">2. Commands</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="extend.html"
+                        title="next chapter">4. Calling external python functions</a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3. Tasks</a><ul>
+<li><a class="reference internal" href="#shell-tasks">3.1. Shell tasks</a><ul>
+<li><a class="reference internal" href="#command-mandatory">3.1.1. Command (Mandatory)</a></li>
+<li><a class="reference internal" href="#cwd-optional">3.1.2. Cwd (Optional)</a></li>
+<li><a class="reference internal" href="#watch-optional">3.1.3. Watch (Optional)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cp-tasks">3.2. Cp tasks</a><ul>
+<li><a class="reference internal" href="#source-mandatory">3.2.1. Source (Mandatory)</a></li>
+<li><a class="reference internal" href="#dest-mandatory">3.2.2. Dest (Mandatory)</a></li>
+<li><a class="reference internal" href="#cp-watch">3.2.3. Watch (Optional)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#server-task">3.3. Server task</a><ul>
+<li><a class="reference internal" href="#path-mandatory">3.3.1. Path (Mandatory)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tasks.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="extend.html" title="4. Calling external python functions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="commands.html" title="2. Commands"
+             >previous</a> |</li>
+        <li><a href="index.html">termite 0.0.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, José Luis Lafuente.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

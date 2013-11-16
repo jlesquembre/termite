@@ -1,0 +1,179 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2. Commands &mdash; termite 0.0.2 documentation</title>
+    
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="termite 0.0.2 documentation" href="index.html" />
+    <link rel="next" title="3. Tasks" href="tasks.html" />
+    <link rel="prev" title="1. Basic concepts" href="basic.html" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tasks.html" title="3. Tasks"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="basic.html" title="1. Basic concepts"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">termite 0.0.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="commands">
+<h1>2. Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h1>
+<p>Commands define the tasks to be run. An example of a <cite>termite.yaml</cite> file with 2
+commands:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">hello</span>
+    <span class="l-Scalar-Plain">tasks</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">shell</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">echo &quot;Hello world!!&quot;</span>
+
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">bye</span>
+    <span class="l-Scalar-Plain">tasks</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">shell</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">echo &quot;Goodbye!!&quot;</span>
+</pre></div>
+</div>
+<p>Pass the name of the command to termite as its first argument. If you don&#8217;t
+specify any command name in the command line, <a class="reference external" href="http://google.com/">Termite</a> runs the first command
+found. In this example, running in the command line:</p>
+<div class="highlight-bash"><div class="highlight"><pre>termite hello
+</pre></div>
+</div>
+<p>has the same effect as run just</p>
+<div class="highlight-bash"><div class="highlight"><pre>termite
+</pre></div>
+</div>
+<div class="section" id="global-tasks">
+<h2>2.1. Global tasks<a class="headerlink" href="#global-tasks" title="Permalink to this headline">¶</a></h2>
+<p>It is possible create a task globally and use it in several commands, an example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">shell</span><span class="p-Indicator">:</span> <span class="nl">&amp;some_id</span>
+    <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">echo &quot;Hello world!!&quot;</span>
+
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">hello</span>
+    <span class="l-Scalar-Plain">tasks</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">shell</span><span class="p-Indicator">:</span> <span class="nv">*some_id</span>
+
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">bye</span>
+    <span class="l-Scalar-Plain">tasks</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">shell</span><span class="p-Indicator">:</span> <span class="nv">*some_id</span>
+
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">shell</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">echo &quot;Goodbye!!&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3>Useful Links</h3>
+<ul>
+  <li><a href="https://pypi.python.org/pypi/termite">termite @ PyPI</a></li>
+  <li><a href="https://github.com/jlesquembre/termite">termite @ github</a></li>
+  <li><a href="https://github.com/jlesquembre/termite/issues">report an error</a></li>
+
+</ul>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="basic.html"
+                        title="previous chapter">1. Basic concepts</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tasks.html"
+                        title="next chapter">3. Tasks</a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Commands</a><ul>
+<li><a class="reference internal" href="#global-tasks">2.1. Global tasks</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/commands.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tasks.html" title="3. Tasks"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="basic.html" title="1. Basic concepts"
+             >previous</a> |</li>
+        <li><a href="index.html">termite 0.0.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, José Luis Lafuente.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
