@@ -1,0 +1,8 @@
+ipython
+ipdb
+pep8
+Sphinx
+sphinxcontrib-napoleon
+tox
+nose
+-e .
